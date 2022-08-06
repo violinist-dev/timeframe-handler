@@ -1,6 +1,6 @@
 {
-    "name": "violinist-dev/commit-message-creator",
-    "description": "Generates commit messages for violinist",
+    "name": "violinist-dev/timeframe-handler",
+    "description": "Timeframe handler for the timeframe config",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,12 +11,12 @@
     ],
     "autoload": {
       "psr-4": {
-        "Violinist\\CommitMessageCreator\\": "src"
+        "Violinist\\TimeFrameHandler\\": "src"
       }
     },
     "autoload-dev": {
       "psr-4": {
-        "Violinist\\CommitMessageCreator\\Tests\\": "tests/src"
+        "Violinist\\TimeFrameHandler\\Tests\\": "tests/src"
       }
     },
     "minimum-stability": "dev",
