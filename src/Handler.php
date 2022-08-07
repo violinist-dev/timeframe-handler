@@ -23,6 +23,11 @@ class Handler
         }
         // See if it is disallowed then.
         $date = new \DateTime('now', $timezone);
+        return self::isDisallowedFromTime($date);
+    }
+
+    public static function isDisallowedFromTime(\DateTime $date)
+    {
         $hour_parts = explode('-', $frame);
         if (count($hour_parts) != 2) {
             throw new \Exception('Timeframe disallowed is in the wrong format');
