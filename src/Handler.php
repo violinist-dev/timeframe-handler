@@ -9,10 +9,6 @@ class Handler
 
     public static function isDisallowed(Config $config)
     {
-        $frame = $config->getTimeFrameDisallowed();
-        if (empty($frame)) {
-            return false;
-        }
         // Default timezone is UTC.
         $timezone = new \DateTimeZone('+0000');
         try {
@@ -23,19 +19,21 @@ class Handler
         }
         // See if it is disallowed then.
         $date = new \DateTime('now', $timezone);
-        return self::isDisallowedFromTime($date);
+        return self::isDisallowedFromTime($date, $config);
     }
 
-    public static function isDisallowedFromTime(\DateTime $date)
+    public static function isDisallowedFromTime(\DateTime $date, Config $config)
     {
-        $hour_parts = explode('-', $frame);
-        if (count($hour_parts) != 2) {
-            throw new \Exception('Timeframe disallowed is in the wrong format');
+        $frame = $config->getTimeFrameDisallowed();
+        if (empty($frame)) {
+            return false;
         }
+        $hour_parts = explode('-', $frame);
         $low_time_object = new \DateTime($hour_parts[0], $timezone);
         $high_time_object = new \DateTime($hour_parts[1], $timezone);
         if ($date->format('U') > $low_time_object->format('U') && $date->format('U') < $high_time_object->format('U')) {
-            throw new OutsideProcessingHoursException('Current hour is inside timeframe disallowed');
+            return true;
         }
+        return false;
     }
 }
