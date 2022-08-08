@@ -31,6 +31,12 @@ class Handler
         $hour_parts = explode('-', $frame);
         $low_time_object = new \DateTime($hour_parts[0], $timezone);
         $high_time_object = new \DateTime($hour_parts[1], $timezone);
+        // If the high object is lower than the low, we just add a whole day.
+        // This is to accommodate timeframes like 23-01 or 08:00-00:00. So
+        // passing midnight I guess.
+        if ($low_time_object > $high_time_object) {
+            $high_time_object->modify('+1 day');
+        }
         if ($date->format('U') > $low_time_object->format('U') && $date->format('U') < $high_time_object->format('U')) {
             return true;
         }
