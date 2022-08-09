@@ -29,6 +29,7 @@ class Handler
             return false;
         }
         $hour_parts = explode('-', $frame);
+        $timezone = $date->getTimezone();
         $low_time_object = new \DateTime($hour_parts[0], $timezone);
         $high_time_object = new \DateTime($hour_parts[1], $timezone);
         // If the high object is lower than the low, we just add a whole day.
