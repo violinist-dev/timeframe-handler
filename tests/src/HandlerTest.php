@@ -17,7 +17,7 @@ class HandlerTest extends TestCase
     {
         $config = new Config();
         $config->setConfig((object) [
-            timeframe_disallowed => '00:00-2359',
+            'timeframe_disallowed' => '00:00-2359',
         ]);
         self::assertTrue(Handler::isDisallowed($config));
     }
