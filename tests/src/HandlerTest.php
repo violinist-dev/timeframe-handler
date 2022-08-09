@@ -21,4 +21,15 @@ class HandlerTest extends TestCase
         ]);
         self::assertTrue(Handler::isDisallowed($config));
     }
+
+    public function testOneMinute()
+    {
+        // I guess this test can fail one minute every day🤷.
+        $config = new Config();
+        $config->setConfig((object) [
+            'timeframe_disallowed' => '00:00-0001',
+        ]);
+        self::assertFalse(Handler::isDisallowed($config));
+
+    }
 }
