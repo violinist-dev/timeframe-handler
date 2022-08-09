@@ -40,4 +40,13 @@ class HandlerTest extends TestCase
         ]);
         self::assertTrue(Handler::isDisallowed($config));
     }
+
+    public function testCrapTimezone()
+    {
+        $config = new Config();
+        $config->setConfig((object) [
+            'timezone' => 'derpzone',
+        ]);
+        self::assertFalse(Handler::isDisallowed($config));
+    }
 }
