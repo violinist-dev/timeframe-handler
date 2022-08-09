@@ -31,4 +31,13 @@ class HandlerTest extends TestCase
         ]);
         self::assertFalse(Handler::isDisallowed($config));
     }
+
+    public function testWholeDayPastMidnight()
+    {
+        $config = new Config();
+        $config->setConfig((object) [
+            'timeframe_disallowed' => '00:10-00:09',
+        ]);
+        self::assertTrue(Handler::isDisallowed($config));
+    }
 }
