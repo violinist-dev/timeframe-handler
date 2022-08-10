@@ -17,7 +17,7 @@ class HandlerTest extends TestCase
     {
         $config = new Config();
         $config->setConfig((object) [
-            'timeframe_disallowed' => '00:00-2359',
+            'timeframe_disallowed' => '00:00-23:59',
         ]);
         self::assertTrue(Handler::isDisallowed($config));
         self::assertFalse(Handler::isAllowed($config));
@@ -28,7 +28,7 @@ class HandlerTest extends TestCase
         // I guess this test can fail one minute every day🤷.
         $config = new Config();
         $config->setConfig((object) [
-            'timeframe_disallowed' => '00:00-0001',
+            'timeframe_disallowed' => '00:00-00:01',
         ]);
         self::assertFalse(Handler::isDisallowed($config));
     }
