@@ -44,7 +44,7 @@ class Handler
         return false;
     }
 
-    public static function isAllowed(Config $config) 
+    public static function isAllowed(Config $config)
     {
         return !self::isDisallowed($config);
     }
