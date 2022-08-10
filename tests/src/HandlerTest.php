@@ -54,11 +54,11 @@ class HandlerTest extends TestCase
     public function testFromTimeAllowed()
     {
         $config = new Config();
-        $timezone = new \DateTimeZone('+0200');
+        $timezone = new \DateTimeZone('+0000');
         $date = new \DateTime('now', $timezone);
-        $date = new \DateTime('now');
+        $date2 = new \DateTime('now', new \DateTimeZone('+0000'););
         $config->setConfig((object) [
-            'timeframe_disallowed' => sprintf('%s-%s', $date->modify('-1 hour')->format('H:i'), $date->modify('+2 hour')->format('H:i')),
+            'timeframe_disallowed' => sprintf('%s-%s', $date2->modify('-1 hour')->format('H:i'), $date2->modify('+2 hour')->format('H:i')),
         ]);
         self::assertTrue(Handler::isAllowedFromTime($date, $config));
     }
