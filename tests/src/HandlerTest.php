@@ -50,4 +50,16 @@ class HandlerTest extends TestCase
         ]);
         self::assertFalse(Handler::isDisallowed($config));
     }
+
+    public function testFromTimeAllowed()
+    {
+        $config = new Config();
+        $timezone = new \DateTimeZone('+0200');
+        $date = new \DateTime('now', $timezone);
+        $date = new \DateTime('now'); 
+        $config->setConfig((object) [
+            'timeframe_disallowed' => sprintf('%s-%s', $date->modify('-1 hour')->format('H:i'), $date->modify('+1 hour')->format('H:i')),
+        ]);
+        self::assertTrue(Handler::isAllowedFromTime($date, $config));
+    }
 }
