@@ -58,7 +58,7 @@ class HandlerTest extends TestCase
         $date = new \DateTime('now', $timezone);
         $date = new \DateTime('now');
         $config->setConfig((object) [
-            'timeframe_disallowed' => sprintf('%s-%s', $date->modify('-1 hour')->format('H:i'), $date->modify('+1 hour')->format('H:i')),
+            'timeframe_disallowed' => sprintf('%s-%s', $date->modify('-1 hour')->format('H:i'), $date->modify('+2 hour')->format('H:i')),
         ]);
         self::assertTrue(Handler::isAllowedFromTime($date, $config));
     }
