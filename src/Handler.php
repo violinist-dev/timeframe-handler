@@ -25,6 +25,7 @@ class Handler
     public static function isDisallowedFromTime(\DateTime $date, Config $config)
     {
         $frame = $config->getTimeFrameDisallowed();
+        var_dump([$frame, $date]);
         if (empty($frame)) {
             return false;
         }
