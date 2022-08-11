@@ -56,7 +56,7 @@ class HandlerTest extends TestCase
         $config = new Config();
         $timezone = new \DateTimeZone('+0000');
         $date = new \DateTime('now', $timezone);
-        $date2 = new \DateTime('now', new \DateTimeZone('+0000'););
+        $date2 = new \DateTime('now', new \DateTimeZone('+0000'));
         $config->setConfig((object) [
             'timeframe_disallowed' => sprintf('%s-%s', $date2->modify('-1 hour')->format('H:i'), $date2->modify('+2 hour')->format('H:i')),
         ]);
