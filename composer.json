@@ -21,6 +21,7 @@
     },
     "minimum-stability": "dev",
     "scripts": {
+      "phpstan": "phpstan analyse src tests",
       "test": "@composer lint && phpunit",
       "lint": "phpcs -p -n"
     },
