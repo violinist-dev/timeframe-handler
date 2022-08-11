@@ -54,7 +54,7 @@ class HandlerTest extends TestCase
     public function testFromTimeAllowed()
     {
         $config = new Config();
-        $timezone = new \DateTimeZone('+0000');
+        $timezone = new \DateTimeZone('+0200');
         $date = new \DateTime('now', $timezone);
         $date2 = new \DateTime('now', new \DateTimeZone('+0000'));
         $config->setConfig((object) [
