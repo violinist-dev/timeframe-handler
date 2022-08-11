@@ -43,4 +43,14 @@ class Handler
         }
         return false;
     }
+
+    public static function isAllowed(Config $config)
+    {
+        return !self::isDisallowed($config);
+    }
+
+    public static function isAllowedFromTime(\DateTime $date, Config $config)
+    {
+        return !self::isDisallowedFromTime($date, $config);
+    }
 }
