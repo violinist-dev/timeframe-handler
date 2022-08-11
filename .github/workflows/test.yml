@@ -46,6 +46,12 @@ jobs:
       - name: Run tests
         run: composer test
 
+      - name: Run phpstan
+        if: matrix.php-version != 7.0
+        run: |
+          composer require phpstan/phpstan
+          composer phpstan
+
       - name: Coveralls
         if: matrix.php-version == 7.4
         env:
