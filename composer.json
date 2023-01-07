@@ -31,6 +31,6 @@
         "php-coveralls/php-coveralls": "^2.0"
     },
     "require": {
-        "violinist-dev/violinist-config": "^1.4"
+        "violinist-dev/violinist-config": "^1.4 || ^2.0"
     }
 }
